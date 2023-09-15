@@ -9,9 +9,10 @@
     "@emotion/styled": "11.10.6",
     "@mui/icons-material": "5.11.11",
     "@mui/material": "5.11.15",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-scripts": "3.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-jsx-runtime": "1.0.0-alpha.1",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "typescript": "3.3.3"
