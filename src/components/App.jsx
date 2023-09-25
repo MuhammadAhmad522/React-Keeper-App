@@ -9,11 +9,16 @@ import CreateArea from "./CreateArea";
 function App() {
   const [notes, setNotes] = useState([]);
 
-  function addNote(newNote) {
-    setNotes(prevNotes => {
-      return [...prevNotes, newNote];
-    });
-  }
+function addNote(newNote) {
+  // Create a new note object with a timestamp
+  const timestamp = new Date();
+  const noteWithTimestamp = { ...newNote, timestamp };
+
+  setNotes(prevNotes => {
+    return [...prevNotes, noteWithTimestamp];
+  });
+}
+
 
   function deleteNote(id) {
     setNotes(prevNotes => {
@@ -35,6 +40,7 @@ function App() {
             title={noteItem.title}
             content={noteItem.content}
             onDelete={deleteNote}
+            timestamp={noteItem.timestamp}
           />
         );
       })}
