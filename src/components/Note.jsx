@@ -5,15 +5,12 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Collapse from "@mui/material/Collapse";
-
-// Import the DynamicTimeDisplay component
+import CardActionArea from "@mui/material/CardActionArea";
 import DynamicTimeDisplay from "./DynamicTimeDisplay";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
 function Note(props) {
-  console.log(props.timestamp);
   const [expanded, setExpanded] = useState(false);
 
   function handleExpandClick() {
@@ -24,32 +21,39 @@ function Note(props) {
     props.onDelete(props.id);
   }
 
-  const currentDate = new Date().toLocaleDateString();
+  const truncatedTitle =
+    props.title.length > 30
+      ? `${props.title.substring(0, 30)}...`
+      : props.title;
 
   return (
     <Card className="note">
-      <CardHeader
-        title={props.title}
-        subheader={<DynamicTimeDisplay timestamp={props.timestamp} />} // Use DynamicTimeDisplay here
-        action={
-          <IconButton onClick={handleExpandClick} aria-expanded={expanded}>
-            <ExpandMoreIcon
-              sx={{
-                transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
-                transition: "transform 0.2s",
-              }}
-            />
-          </IconButton>
-        }
-      />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {expanded ? props.content : `${props.content.substring(0, 10)}...`}
-        </Typography>
-      </CardContent>
+      <CardActionArea onClick={handleExpandClick}>
+        <CardHeader
+          title={
+            <Typography variant="h6">
+              {expanded ? props.title : truncatedTitle}
+            </Typography>
+          }
+          subheader={<DynamicTimeDisplay timestamp={props.timestamp} />}
+        />
+        <CardContent>
+          <Typography
+            variant="body2"
+            variantMapping={{ body2: "p" }}
+            color="text.secondary"
+          >
+            {expanded ? props.content : `${props.content.substring(0, 10)}...`}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+
       <CardActions>
         <IconButton onClick={handleDeleteClick} aria-label="delete">
           <DeleteIcon />
+        </IconButton>
+        <IconButton onClick={handleDeleteClick} aria-label="delete">
+          <ModeEditIcon />
         </IconButton>
       </CardActions>
     </Card>

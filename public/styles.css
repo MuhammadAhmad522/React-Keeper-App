@@ -44,35 +44,20 @@ footer p {
   width: 240px;
   margin: 16px;
   float: left;
-  
-} 
-
-
-
-
-.note h1 {
-  font-size: 1.1em;
-  margin-bottom: 6px;
 }
+
+
+
 .note p {
-  font-size: 1.1em;
   margin-bottom: 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
-  font-size: 1.1em;
+  font-size: 1.3em;
   margin-bottom: 10px;
 }
 
-.note button {
-  position: relative;
-  float: right;
-  margin-right: 10px;
+.note svg {
   color: #f5ba13;
-  border: none;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  outline: none;
 }
 
 form.create-note {
