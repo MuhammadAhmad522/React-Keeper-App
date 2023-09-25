@@ -52,7 +52,7 @@ function Note(props) {
         <IconButton onClick={handleDeleteClick} aria-label="delete">
           <DeleteIcon />
         </IconButton>
-        <IconButton onClick={handleDeleteClick} aria-label="delete">
+        <IconButton aria-label="edit">
           <ModeEditIcon />
         </IconButton>
       </CardActions>
